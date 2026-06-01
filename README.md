@@ -1,6 +1,7 @@
 # Minor Safety Model Evaluation Harness
 
 This is a portfolio project designed for a Minor Safety model strategy / operations internship. It demonstrates the full loop of dataset standards, model evaluation, vulnerability analysis, and improvement recommendations.
+https://aarielah.github.io/minor-safety-eval-harness/
 
 ## What It Shows
 
