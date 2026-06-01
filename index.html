@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Minor Safety Model Evaluation Harness</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="hero">
+        <div>
+          <p class="eyebrow">Trust & Safety model strategy prototype</p>
+          <h1>Minor Safety Model Evaluation Harness</h1>
+          <p class="lede">
+            A portfolio-ready dashboard for evaluating teen-safety moderation models across policy
+            risk, adversarial language, multilingual context, and escalation quality.
+          </p>
+        </div>
+        <div class="hero-panel" aria-label="Project snapshot">
+          <div>
+            <span class="panel-label">Dataset</span>
+            <strong id="totalCases">0</strong>
+          </div>
+          <div>
+            <span class="panel-label">Risk Types</span>
+            <strong id="riskTypes">0</strong>
+          </div>
+          <div>
+            <span class="panel-label">Eval Modes</span>
+            <strong>3</strong>
+          </div>
+        </div>
+      </section>
+
+      <section class="controls" aria-label="Evaluation controls">
+        <div class="control-group">
+          <label for="modelMode">Model profile</label>
+          <select id="modelMode">
+            <option value="baseline">Baseline classifier</option>
+            <option value="optimized" selected>Optimized safety model</option>
+            <option value="strict">Strict escalation policy</option>
+          </select>
+        </div>
+        <div class="control-group">
+          <label for="categoryFilter">Risk category</label>
+          <select id="categoryFilter">
+            <option value="all">All categories</option>
+          </select>
+        </div>
+        <div class="control-group">
+          <label for="caseSearch">Search cases</label>
+          <input id="caseSearch" type="search" placeholder="coded language, bullying, privacy..." />
+        </div>
+        <button id="downloadJsonl" type="button" title="Download JSONL dataset">
+          <span aria-hidden="true">DL</span>
+          JSONL
+        </button>
+      </section>
+
+      <section class="metrics-grid" aria-label="Model metrics">
+        <article class="metric-card">
+          <span>Accuracy</span>
+          <strong id="accuracy">0%</strong>
+          <small>Overall label match</small>
+        </article>
+        <article class="metric-card">
+          <span>Recall</span>
+          <strong id="recall">0%</strong>
+          <small>High-risk detection</small>
+        </article>
+        <article class="metric-card">
+          <span>False Negatives</span>
+          <strong id="falseNegatives">0</strong>
+          <small>Missed safety escalations</small>
+        </article>
+        <article class="metric-card">
+          <span>False Positives</span>
+          <strong id="falsePositives">0</strong>
+          <small>Over-enforced safe cases</small>
+        </article>
+      </section>
+
+      <section class="workspace">
+        <aside class="side-panel">
+          <div class="section-heading">
+            <h2>Policy Labels</h2>
+            <p>Ground-truth standard used for model QA.</p>
+          </div>
+          <div id="labelLegend" class="legend"></div>
+          <div class="section-heading">
+            <h2>Failure Modes</h2>
+            <p>Where mitigation work should start.</p>
+          </div>
+          <div id="failureModes" class="failure-list"></div>
+        </aside>
+
+        <section class="main-panel">
+          <div class="tabs" role="tablist" aria-label="Dashboard tabs">
+            <button class="tab active" data-tab="overview" type="button">Overview</button>
+            <button class="tab" data-tab="dataset" type="button">Dataset</button>
+            <button class="tab" data-tab="matrix" type="button">Confusion Matrix</button>
+            <button class="tab" data-tab="recommendations" type="button">Actions</button>
+          </div>
+
+          <div id="overview" class="tab-panel active">
+            <div class="section-heading">
+              <h2>Coverage by Risk Type</h2>
+              <p>Balanced test coverage helps expose model gaps before launch.</p>
+            </div>
+            <div id="coverageChart" class="bar-chart"></div>
+          </div>
+
+          <div id="dataset" class="tab-panel">
+            <div class="section-heading">
+              <h2>Evaluation Cases</h2>
+              <p>Each case includes a policy label, adversarial tag, and model output.</p>
+            </div>
+            <div id="caseList" class="case-list"></div>
+          </div>
+
+          <div id="matrix" class="tab-panel">
+            <div class="section-heading">
+              <h2>Confusion Matrix</h2>
+              <p>Rows are ground truth labels. Columns are model predictions.</p>
+            </div>
+            <div id="confusionMatrix" class="matrix-wrap"></div>
+          </div>
+
+          <div id="recommendations" class="tab-panel">
+            <div class="section-heading">
+              <h2>Model Improvement Plan</h2>
+              <p>Concrete next steps a model strategy intern could propose.</p>
+            </div>
+            <div id="recommendationList" class="recommendations"></div>
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
