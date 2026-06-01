@@ -17,6 +17,6 @@ This is a portfolio project designed for a Minor Safety model strategy / operati
 
 Open `index.html` in a browser.
 
-No API key or server is required. The model output is simulated so the dashboard can be reviewed instantly by a recruiter or hiring manager.
+No API key or server is required. 
 
 
